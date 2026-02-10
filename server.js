@@ -4,7 +4,7 @@ const port = process.env.PORT || 5000;
 
 // Middleware to parse JSON
 app.use(express.json());
-app.use(cors())
+// app.use(cors())
 
 // Simple GET route
 // app.get('/', (req, res) => {
