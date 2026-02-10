@@ -4,11 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 function f1() {
     return axios.get('https://my-first-app-backend-5uf6.onrender.com/users')
     // return axios.get('/users')
-    
+
 }
 
 export default function AboutUs() {
-    const { isLoading, data, error, isError, isFetched } = useQuery({
+    const { isLoading, data, error, isError } = useQuery({
         queryKey: 'k1',
         queryFn: f1
     })
@@ -32,6 +32,7 @@ export default function AboutUs() {
                 <h2>Our Values</h2>
                 <h2>{isLoading && "Loading..."}</h2>
                 <h2>{isError && "Oops! technical issue"}</h2>
+                <h2>{isError && error.message}</h2>
                 <ul>
                     {data?.data?.map(d => {
                         return <li>{d.name}</li>
