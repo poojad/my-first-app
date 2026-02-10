@@ -2,7 +2,9 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
 function f1() {
-    return axios.get('/users')
+    return axios.get('https://my-first-app-backend-5uf6.onrender.com/users')
+    // return axios.get('/users')
+    
 }
 
 export default function AboutUs() {
