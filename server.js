@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 // Middleware to parse JSON
 app.use(
     cors({
-        origin: "https://firstapp2-bbf7.onrender.com"
+        origin: "https://ui-7bvw.onrender.com"
     })
 );
 app.use(express.json());
