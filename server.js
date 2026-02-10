@@ -1,9 +1,19 @@
-const express = require('express');
+import cors from "cors";
+import express from "express";
+
+// const express = require('express');
 const app = express();
+
 const port = process.env.PORT || 5000;
 
 // Middleware to parse JSON
+app.use(
+    cors({
+        origin: "https://firstapp2-bbf7.onrender.com"
+    })
+);
 app.use(express.json());
+
 // app.use(cors())
 
 // Simple GET route
