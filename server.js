@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+// import bodyParser from "bodyParser";
 
 // const express = require('express');
 const app = express();
@@ -9,38 +10,40 @@ const port = process.env.PORT || 5000;
 // Middleware to parse JSON
 app.use(
     cors({
-        origin: "https://ui-7bvw.onrender.com"
+        origin: "https://ui-7bvw.onrender.com"      //prod
+        // origin: "http://localhost:3000"          //dev
     })
 );
-app.use(express.json());
 
-// app.use(cors())
+app.use(express.json());
+// app.use(bodyParser.json());
+// // app.use(cors())
 
 // Simple GET route
 // app.get('/', (req, res) => {
 //     res.send('Hello, this is my API!');
 // });
 
+const users = [
+    { id: 1, name: 'Pooja' },
+    { id: 2, name: 'Rohit' },
+    { id: 3, name: 'Pankaj' },
+    { id: 4, name: 'Harry' },
+    { id: 5, name: 'Amyra' },
+    { id: 6, name: 'Ankita' },
+];
+
+
 // GET API to return data
 app.get('/users', (req, res) => {
-    const users = [
-        { id: 1, name: 'Pooja' },
-        { id: 2, name: 'Rohit' },
-        { id: 2, name: 'Pankaj' },
-        { id: 2, name: 'Harry' },
-        { id: 2, name: 'Amyra' },
-        { id: 2, name: 'Ankita' },
-    ];
     res.json(users);
 });
 
-// POST API to receive data
+// POST API to receive data - ex: req will be an object {name: 'pooja'}
 app.post('/users', (req, res) => {
-    const newUser = req.body;
-    res.json({
-        message: 'User received successfully',
-        user: newUser
-    });
+    const newUser = req.body.name;
+    users.push({ id: users.length + 1, name: newUser })
+    res.json(users);
 });
 
 // Start the server
